@@ -1,0 +1,64 @@
+{
+  "name": "moyuread-browser",
+  "version": "0.1.0",
+  "description": "An independent offline-first desktop browser shell with focus mode.",
+  "main": "out/main/main.js",
+  "author": "Local Project",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "package:win": "npm run build && npm run rebuild:native && electron-builder --win",
+    "rebuild:native": "electron-rebuild -f -o better-sqlite3"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "electron-updater": "^6.6.2",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "uiohook-napi": "^1.5.5"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.2.0",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^35.1.5",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^3.1.0",
+    "jsdom": "^25.0.1",
+    "playwright": "^1.62.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  },
+  "build": {
+    "appId": "com.local.moyuread.browser",
+    "productName": "Moyu Browser",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": "nsis",
+      "artifactName": "MoyuBrowser-${version}-setup.${ext}",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "npmRebuild": false
+  }
+}

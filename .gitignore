@@ -1,0 +1,11 @@
+﻿node_modules/
+out/
+release/
+*.log
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.qa-user-data/
+.qa-user-data-2/
+qa-shell.png
+.qa-user-data-3/
